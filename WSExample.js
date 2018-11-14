@@ -47,7 +47,7 @@ options = {
   width: 1280,
   height: 720,
   fps: 30,
-  encoding: 'RGB2',
+  encoding: 'RGB16',
   quality: 75
 }
 
