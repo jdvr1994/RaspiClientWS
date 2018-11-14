@@ -21,7 +21,7 @@ function endBlink() { //function to stop blinking
     author: 'raspiWS',
     text: 'chao joven'
   };
-  socket.emit("")
+  socket.emit('new-message', message)
 }
 
 setTimeout(endBlink, 5000); //stop blinking after 5 seconds
