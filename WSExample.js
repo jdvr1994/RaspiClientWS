@@ -36,16 +36,17 @@ socket.on('disconnect', function(){});
 
 //Camera
 const myCamera = new PiCamera({
-  mode: 'photo',
-  output: `/home/pi/miProyecto/test.jpg`,
-  width: 640,
-  height: 480,
-  nopreview: true,
+  mode: 'video',
+  output: `${ __dirname }/video.h264`,
+  width: 1920,
+  height: 1080,
+  timeout: 5000, // Record for 5 seconds
+  nopreview: false,
 });
 
-myCamera.snap()
+myCamera.record()
   .then((result) => {
-    console.log(result)
+    // Your video was captured
   })
   .catch((error) => {
      // Handle your error
