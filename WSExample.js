@@ -1,4 +1,6 @@
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
+var socket = require('socket.io-client')('http://localhost');
+
 var LED = new Gpio(4, 'out'); //use GPIO pin 4, and specify that it is output
 var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
 
@@ -17,3 +19,10 @@ function endBlink() { //function to stop blinking
 }
 
 setTimeout(endBlink, 5000); //stop blinking after 5 seconds
+
+socket.on('connect', function (socket) {
+    console.log('Connected!');
+});
+
+socket.on('event', function(data){});
+socket.on('disconnect', function(){});
