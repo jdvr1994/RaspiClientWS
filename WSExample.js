@@ -1,7 +1,6 @@
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var socket = require('socket.io-client')('http://209.182.218.174:8080');
-var StreamCamera = require('pi-camera-connect').StreamCamera;
-var Codec  = require('pi-camera-connect').Codec;
+const raspberryPiCamera = require('raspberry-pi-camera-native');
 
 var LED = new Gpio(4, 'out'); //use GPIO pin 4, and specify that it is output
 var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
@@ -36,26 +35,11 @@ socket.on('event', function(data){});
 socket.on('disconnect', function(){});
 
 //Camera
-// Capture 5 seconds of H264 video and save to disk
-const runApp = async () => {
+// add frame data event listener
+raspberryPiCamera.on('frame', (frameData) => {
+  // frameData is a Node.js Buffer
+  // ...
+});
 
-    const streamCamera = new StreamCamera({
-        codec: Codec.H264
-    });
-
-    const videoStream = streamCamera.createStream();
-    await streamCamera.startCapture();
-
-    // We can also listen to data events as they arrive
-    videoStream.on("data", data => console.log("New data", data));
-    videoStream.on("end", data => console.log("Video stream has ended"));
-
-    // Wait for 5 seconds
-    await new Promise(resolve => setTimeout(() => resolve(), 5000));
-
-    await streamCamera.stopCapture();
-};
-
-runApp();
-
-runApp();
+// start capture
+raspberryPiCamera.start();
