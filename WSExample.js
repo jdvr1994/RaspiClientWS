@@ -39,7 +39,7 @@ socket.on('disconnect', function(){});
 raspberryPiCamera.on('frame', (frameData) => {
   // frameData is a Node.js Buffer
   // ...
-  console.log(frameData)
+  console.log(frameData.length)
 });
 
 // start capture
