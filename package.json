@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/jdvr1994/RaspiClientWS#readme",
   "dependencies": {
-    "onoff": "^3.2.2"
+    "onoff": "^3.2.2",
+    "socket.io": "^2.1.1"
   }
 }
