@@ -1,7 +1,7 @@
 {
   "name": "RaspiClientWS",
   "version": "1.0.0",
-  "description": "",
+  "description": "nbdejs WS client",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
