@@ -45,12 +45,17 @@ const runApp = async () => {
 
     const videoStream = streamCamera.createStream();
     await streamCamera.startCapture();
-    const image = await streamCamera.takeImage();
-    // Process image...
+
+    // We can also listen to data events as they arrive
     videoStream.on("data", data => console.log("New data", data));
     videoStream.on("end", data => console.log("Video stream has ended"));
+
+    // Wait for 5 seconds
     await new Promise(resolve => setTimeout(() => resolve(), 5000));
+
     await streamCamera.stopCapture();
 };
+
+runApp();
 
 runApp();
