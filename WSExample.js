@@ -37,11 +37,11 @@ socket.on('disconnect', function(){});
 //Camera
 const myCamera = new PiCamera({
   mode: 'video',
-  output: `${ __dirname }/video.h264`,
+  output: `/home/pi/miProyecto//video.h264`,
   width: 1920,
   height: 1080,
   timeout: 5000, // Record for 5 seconds
-  nopreview: false,
+  nopreview: true,
 });
 
 myCamera.record()
