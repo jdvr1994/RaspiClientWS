@@ -16,6 +16,12 @@ function endBlink() { //function to stop blinking
   clearInterval(blinkInterval); // Stop blink intervals
   LED.writeSync(0); // Turn LED off
   LED.unexport(); // Unexport GPIO to free resources
+
+  var message = {
+    author: 'raspiWS',
+    text: 'chao joven'
+  };
+  socket.emit("")
 }
 
 setTimeout(endBlink, 5000); //stop blinking after 5 seconds
