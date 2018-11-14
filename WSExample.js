@@ -1,6 +1,7 @@
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var socket = require('socket.io-client')('http://209.182.218.174:8080');
-import { StreamCamera, Codec } from "pi-camera-connect";
+var StreamCamera = require('pi-camera-connect').StreamCamera;
+var Codec  = require('pi-camera-connect').Codec;
 
 var LED = new Gpio(4, 'out'); //use GPIO pin 4, and specify that it is output
 var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
