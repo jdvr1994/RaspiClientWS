@@ -51,4 +51,4 @@ options = {
   quality: 75
 }
 
-raspberryPiCamera.start(options, callback);
+raspberryPiCamera.start(options, ()=>{});
