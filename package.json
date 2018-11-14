@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jdvr1994/RaspiClientWS/issues"
   },
-  "homepage": "https://github.com/jdvr1994/RaspiClientWS#readme"
+  "homepage": "https://github.com/jdvr1994/RaspiClientWS#readme",
+  "dependencies": {
+    "onoff": "^3.2.2"
+  }
 }
