@@ -1,5 +1,6 @@
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var socket = require('socket.io-client')('http://209.182.218.174:8080');
+const PiCamera = require('pi-camera');
 
 var LED = new Gpio(4, 'out'); //use GPIO pin 4, and specify that it is output
 var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
@@ -32,3 +33,20 @@ socket.on('connect', function (socket) {
 
 socket.on('event', function(data){});
 socket.on('disconnect', function(){});
+
+//Camera
+const myCamera = new PiCamera({
+  mode: 'photo',
+  output: `/home/pi/miProyecto/test.jpg`,
+  width: 640,
+  height: 480,
+  nopreview: true,
+});
+
+myCamera.snap()
+  .then((result) => {
+    // Your picture was captured
+  })
+  .catch((error) => {
+     // Handle your error
+  });
