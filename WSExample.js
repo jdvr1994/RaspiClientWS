@@ -1,6 +1,6 @@
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var socket = require('socket.io-client')('http://209.182.218.174:8080');
-const PiCamera = require('pi-camera');
+import { StreamCamera, Codec } from "pi-camera-connect";
 
 var LED = new Gpio(4, 'out'); //use GPIO pin 4, and specify that it is output
 var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
@@ -35,19 +35,21 @@ socket.on('event', function(data){});
 socket.on('disconnect', function(){});
 
 //Camera
-const myCamera = new PiCamera({
-  mode: 'video',
-  output: `/home/pi/miProyecto//video.h264`,
-  width: 1920,
-  height: 1080,
-  timeout: 5000, // Record for 5 seconds
-  nopreview: true,
-});
+// Capture 5 seconds of H264 video and save to disk
+const runApp = async () => {
 
-myCamera.record()
-  .then((result) => {
-    // Your video was captured
-  })
-  .catch((error) => {
-     // Handle your error
-  });
+    const streamCamera = new StreamCamera({
+        codec: Codec.H264
+    });
+
+    const videoStream = streamCamera.createStream();
+    await streamCamera.startCapture();
+    const image = await streamCamera.takeImage();
+    // Process image...
+    videoStream.on("data", data => console.log("New data", data));
+    videoStream.on("end", data => console.log("Video stream has ended"));
+    await new Promise(resolve => setTimeout(() => resolve(), 5000));
+    await streamCamera.stopCapture();
+};
+
+runApp();
