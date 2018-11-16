@@ -1,7 +1,10 @@
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var socket = require('socket.io-client')('http://209.182.218.174:8080');
+var socketStream = require('socket.io-stream');
 const raspberryPiCamera = require('raspberry-pi-camera-native');
 const http = require('http');
+
+var stream = socketStream.createStream();
 
 var LED = new Gpio(4, 'out'); //use GPIO pin 4, and specify that it is output
 var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
@@ -41,6 +44,7 @@ raspberryPiCamera.on('frame', (frameData) => {
   // frameData is a Node.js Buffer
   // ...
   socket.emit('stream',frameData)
+   //socketStream(socket).emit('image', stream, {name: frameData});
 });
 
 // start capture
