@@ -52,7 +52,7 @@ options = {
   width: 640,
   height: 480,
   fps: 5,
-  encoding: 'JPEG',
+  encoding: 'MMAL_ENCODING_H264',
   quality: 10
 }
 
