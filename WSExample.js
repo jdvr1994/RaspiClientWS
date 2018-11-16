@@ -53,7 +53,7 @@ options = {
   height: 480,
   fps: 10,
   encoding: 'JPEG',
-  quality: 5
+  quality: 15
 }
 
 raspberryPiCamera.start(options, ()=>{});
