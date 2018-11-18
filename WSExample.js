@@ -32,7 +32,7 @@ function endBlink() { //function to stop blinking
 setTimeout(endBlink, 5000); //stop blinking after 5 seconds
 
 socket.on('connect', function (socket) {
-    console.log('Connected!');
+    console.log(`Connected! ${socket.id}`);
 });
 
 socket.on('event', function(data){});
