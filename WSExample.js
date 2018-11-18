@@ -55,7 +55,7 @@ raspberryPiCamera.on('frame', (frameData) => {
 options = {
   width: 480,
   height: 360,
-  fps: 15,
+  fps: 7,
   encoding: 'JPEG',
   quality: 10
 }
