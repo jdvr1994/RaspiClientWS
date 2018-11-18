@@ -32,11 +32,15 @@ function endBlink() { //function to stop blinking
 setTimeout(endBlink, 5000); //stop blinking after 5 seconds
 
 socket.on('connect', function (socket) {
-    console.log(`Connected! ${socket.id}`);
+    console.log('Connected!');
 });
 
 socket.on('event', function(data){});
 socket.on('disconnect', function(){});
+
+socket.on('wsID', function (id) {
+    console.log(id);
+});
 
 //Camera
 // add frame data event listener
