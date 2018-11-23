@@ -53,11 +53,11 @@ raspberryPiCamera.on('frame', (frameData) => {
 
 // start capture
 options = {
-  width: 960,
-  height: 720,
+  width: 640,
+  height: 480,
   fps: 7,
   encoding: 'JPEG',
-  quality: 10
+  quality: 12
 }
 
 raspberryPiCamera.start(options, ()=>{});
